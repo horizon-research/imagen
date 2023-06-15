@@ -1,0 +1,38 @@
+g1=0.0546875;g2=0.2421875;g3=0.40625;g4=0.2421875;g5=0.0546875;
+i1=0.2117647;i2=0.7176471;i3=0.0705882;
+
+input i;
+
+il = im(x,y)
+    i1*i(x,y,0)+i2*i(x,y,1)+i3*i(x,y,2)
+end
+
+c15 = im(x,y)
+    g1*il(x,y-2)+g2*il(x,y-1)+g3*il(x,y)+g4*il(x,y+1)+g5*il(x,y+2)
+end
+
+c51 = im(x,y)
+    g1*c15(x-2,y)+g2*c15(x-1,y)+g3*c15(x,y)+g4*c15(x+1,y)+g5*c15(x+2,y)
+end
+
+sox = im(x,y)
+    -1*c51(x-1,y-1)-2*c51(x-1,y)-1*c51(x-1,y+1)
+    +0*c51(x,y-1)+0*c51(x,y)+0*c51(x,y+1)
+    +1*c51(x+1,y-1)+2*c51(x+1,y)+1*c51(x+1,y+1)
+end
+
+soy = im(x,y)
+    -1*sox(x-1,y-1)+0*sox(x-1,y)-1*sox(x-1,y+1)
+    -2*sox(x,y-1)+0*sox(x,y)+2*sox(x,y+1)
+    -1*sox(x+1,y-1)+0*sox(x+1,y)+1*sox(x+1,y+1)
+end
+
+boolean = im(x,y)
+    0*soy(x-1,y-1)+1*soy(x-1,y)+0*soy(x-1,y+1)
+    +1*soy(x,y-1)-1*soy(x,y)+1*soy(x,y+1)
+    +0*soy(x+1,y-1)+1*soy(x+1,y)+0*soy(x+1,y+1)
+end
+
+output op = im(x,y)
+    0.5*boolean(x,y)
+end

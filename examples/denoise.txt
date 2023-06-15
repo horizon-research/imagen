@@ -1,0 +1,30 @@
+input i;
+input f;
+
+g1 = im(x,y)
+	i(x-1,y-1)+i(x-1,y)+i(x-1,y+1)+
+	i(x,y-1)+i(x,y)+i(x,y+1)+
+	i(x+1,y-1)+i(x+1,y)+i(x+1,y+1)
+end
+
+g = im(x,y)
+	0.5*g1(x,y)
+end
+
+r0 = im(x,y)
+	i(x,y)+f(x,y)
+end
+
+r1 = im(x,y)
+	0.8*r0(x,y)
+end
+
+output o = im(x,y)
+	i(x-1,y-1)+i(x-1,y)+i(x-1,y+1)+
+	i(x,y-1)+i(x,y)+i(x,y+1)+
+	i(x+1,y-1)+i(x+1,y)+i(x+1,y+1)+
+
+	g(x-1,y-1)+g(x-1,y)+g(x-1,y+1)+
+	g(x,y-1)+g(x,y)+g(x,y+1)+
+	g(x+1,y-1)+g(x+1,y)+g(x+1,y+1)+ r1(x,y)+f(x,y)
+end

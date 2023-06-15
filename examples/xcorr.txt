@@ -1,0 +1,21 @@
+fac = 0.00390625;
+
+input i;
+
+t1 = im(x,y)
+	i(x-8,y)+i(x-7,y)+i(x-6,y)+i(x-5,y)+i(x-4,y)+
+	i(x-3,y)+i(x-2,y)+i(x-1,y)+i(x,y)+i(x+1,y)+
+	i(x+2,y)+i(x+3,y)+i(x+4,y)+i(x+5,y)+i(x+6,y)+
+	i(x+7,y)+i(x+8,y)+i(x+9,y)
+end
+
+t2 = im(x,y)
+	t1(x,y-8)+t1(x,y-7)+t1(x,y-6)+t1(x,y-5)+t1(x,y-4)+
+	t1(x,y-3)+t1(x,y-2)+t1(x,y-1)+t1(x,y)+t1(x,y+1)+
+	t1(x,y+2)+t1(x,y+3)+t1(x,y+4)+t1(x,y+5)+t1(x,y+6)+
+	t1(x,y+7)+t1(x,y+8)+t1(x,y+9)
+end
+
+output o = im(x,y)
+	fac*t2(x,y)-fac*i(x,y)
+end
