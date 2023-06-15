@@ -1,0 +1,23 @@
+fac=0.33;
+
+input i;
+
+bx=im(x,y) 
+    fac*i(x-1,y)+fac*i(x,y)+fac*i(x+1,y)
+end
+
+by=im(x,y)
+    fac*bx(x,y-1)+fac*bx(x,y)+fac*bx(x,y+1)
+end
+
+diff = im(x,y)
+    i(x,y)-by(x,y)
+end
+
+scaled = im(x,y)
+    0.8*diff(x,y)
+end
+
+output sharpened = im(x,y)
+    i(x,y)+scaled(x,y)
+end
